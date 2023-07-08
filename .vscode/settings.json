@@ -1,5 +1,12 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "cSpell.userWords": ["popoc", "tailwindcss"]
+  "cSpell.userWords": [
+    "popoc",
+    "tailwindcss",
+    "signup",
+    "signin",
+    "webapi",
+    "toastify"
+  ]
 }
