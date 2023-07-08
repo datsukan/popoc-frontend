@@ -35,20 +35,26 @@ export class SignUp implements SignUpRequest {
       res.valid = false
       res.email.valid = false
       res.email.message = 'メールアドレスが入力されていません。'
-    } else if (this.email.length < 5 || this.email.length > 256) {
+    } else if (
+      this.email.length < minEmailLen ||
+      this.email.length > maxEmailLen
+    ) {
       res.valid = false
       res.email.valid = false
-      res.email.message = 'メールアドレスは5～256文字の範囲で入力してください。'
+      res.email.message = `メールアドレスは${minEmailLen}～${maxEmailLen}文字の範囲で入力してください。`
     }
 
     if (!this.password) {
       res.valid = false
       res.password.valid = false
       res.password.message = 'パスワードが入力されていません。'
-    } else if (this.password.length < 8 || this.password.length > 128) {
+    } else if (
+      this.password.length < minPasswordLen ||
+      this.password.length > maxPasswordLen
+    ) {
       res.valid = false
       res.password.valid = false
-      res.password.message = 'パスワードは8～128文字の範囲で入力してください。'
+      res.password.message = `パスワードは${minPasswordLen}～${maxPasswordLen}文字の範囲で入力してください。`
     }
 
     return res
@@ -60,7 +66,6 @@ export class SignUp implements SignUpRequest {
       return { hasError: true, errorMessage: '入力内容が不正です。' }
     }
 
-    return { hasError: true, errorMessage: 'テストエラーです' }
     // TODO: あとでWebAPIのリクエスト処理を書く
 
     return { hasError: false, errorMessage: '' }
