@@ -1,15 +1,18 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 
 import { Logo } from '@/components/Logo'
-import { InputField } from '@/components/signup/InputTextField'
-import { SignUpButton } from '@/components/signup//SignUpButton'
+import { InputField } from './InputTextField'
+import { SignUpButton } from './SignUpButton'
 
 import { SignUp, maxEmailLen, maxPasswordLen } from '@/webapi/signup'
 
 export const SignUpForm = () => {
+  const router = useRouter()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailValidationResult, setEmailValidationResult] = useState({
@@ -20,7 +23,6 @@ export const SignUpForm = () => {
     valid: true,
     message: '',
   })
-  const [wasExec, setWasExec] = useState(false)
 
   function initializeValidationResult() {
     setEmailValidationResult({
@@ -51,12 +53,10 @@ export const SignUpForm = () => {
 
     if (res.hasError) {
       toast.error(res.errorMessage)
-      // TODO: 後でちゃんと書く
       return
     }
 
-    toast.success('登録の案内メールを送信しました')
-    setWasExec(true)
+    router.push('/signup/complete')
   }
 
   return (
