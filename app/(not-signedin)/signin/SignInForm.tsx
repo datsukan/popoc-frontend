@@ -8,6 +8,7 @@ import { Logo } from '@/components/Logo'
 import { InputField } from '@/components/form/InputTextField'
 import { StaySignedInCheckBox } from './StaySignedInCheckBox'
 import { SignInButton } from './SignInButton'
+import { ForgotPasswordLink } from './ForgotPasswordLink'
 
 import { SignIn } from '@/webapi/signin'
 import { maxEmailLen, maxPasswordLen } from '@/models/user'
@@ -98,6 +99,9 @@ export const SignInForm = () => {
         </div>
         <div className="mt-12 w-full">
           <SignInButton onClick={execSignUp} />
+        </div>
+        <div className="mt-7 w-full">
+          <ForgotPasswordLink />
         </div>
       </div>
     </div>

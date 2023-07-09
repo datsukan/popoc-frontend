@@ -1,8 +1,4 @@
-import { ToastContainer } from 'react-toastify'
-
-import 'react-toastify/dist/ReactToastify.css'
-
-import { Header } from '@/components/layout/Header'
+import { SignedInHeader } from '@/components/layout/SignedInHeader'
 import { Footer } from '@/components/layout/Footer'
 
 export default function AboutLayout({
@@ -12,12 +8,11 @@ export default function AboutLayout({
 }) {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <SignedInHeader />
       <div className="container mx-auto flex h-full grow flex-col">
         <div className="flex grow flex-col">{children}</div>
         <Footer />
       </div>
-      <ToastContainer />
     </div>
   )
 }

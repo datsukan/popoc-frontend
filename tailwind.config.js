@@ -7,9 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'popoc-black': '#000000',
+        'popoc-black': '#333333',
+        'popoc-info': '#2196f3',
       },
     },
   },
   plugins: [],
-};
+}
