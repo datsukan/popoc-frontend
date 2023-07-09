@@ -8,5 +8,6 @@
     "signin",
     "webapi",
     "toastify"
-  ]
+  ],
+  "editor.tabSize": 2
 }

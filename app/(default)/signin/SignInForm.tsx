@@ -6,16 +6,18 @@ import { toast } from 'react-toastify'
 
 import { Logo } from '@/components/Logo'
 import { InputField } from '@/components/form/InputTextField'
-import { SignUpButton } from './SignUpButton'
+import { StaySignedInCheckBox } from './StaySignedInCheckBox'
+import { SignInButton } from './SignInButton'
 
-import { SignUp } from '@/webapi/signup'
+import { SignIn } from '@/webapi/signin'
 import { maxEmailLen, maxPasswordLen } from '@/models/user'
 
-export const SignUpForm = () => {
+export const SignInForm = () => {
   const router = useRouter()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isStaySignedIn, setIsStaySignedIn] = useState(false)
   const [emailValidationResult, setEmailValidationResult] = useState({
     valid: true,
     message: '',
@@ -39,17 +41,17 @@ export const SignUpForm = () => {
   function execSignUp() {
     initializeValidationResult()
 
-    const req = { email, password }
-    const signUp = new SignUp(req)
+    const req = { email, password, isStaySignedIn }
+    const signIn = new SignIn(req)
 
-    const validationResult = signUp.validate()
+    const validationResult = signIn.validate()
     if (!validationResult.valid) {
       setEmailValidationResult(validationResult.email)
       setPasswordValidationResult(validationResult.password)
       return
     }
 
-    const res = signUp.post()
+    const res = signIn.post()
     initializeValidationResult()
 
     if (res.hasError) {
@@ -57,14 +59,15 @@ export const SignUpForm = () => {
       return
     }
 
-    router.push('/signup/complete')
+    toast.success('ログインしました')
+    router.push('/dashboard')
   }
 
   return (
     <div className="w-[500px] rounded-lg p-12 shadow-2xl">
       <div className="flex flex-col items-center">
         <Logo />
-        <h1 className="mt-4 text-2xl">アカウント登録</h1>
+        <h1 className="mt-4 text-2xl">ログイン</h1>
         <div className="mt-6 w-full">
           <InputField
             type="email"
@@ -87,8 +90,14 @@ export const SignUpForm = () => {
             onChange={setPassword}
           />
         </div>
+        <div className="mt-6 w-full">
+          <StaySignedInCheckBox
+            isChecked={isStaySignedIn}
+            onChange={setIsStaySignedIn}
+          />
+        </div>
         <div className="mt-12 w-full">
-          <SignUpButton onClick={execSignUp} />
+          <SignInButton onClick={execSignUp} />
         </div>
       </div>
     </div>

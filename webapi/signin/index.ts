@@ -1,4 +1,4 @@
-import { SignUpRequest } from '@/webapi/type/request/signup'
+import { SignInRequest } from '@/webapi/type/request/signin'
 import { ValidationResult } from '@/webapi/type/validation/result'
 import { ExecResult } from '@/webapi/type/exec-result'
 
@@ -9,26 +9,30 @@ import {
   maxPasswordLen,
 } from '@/models/user'
 
-type SignUpValidationResult = {
+type SignInValidationResult = {
   valid: boolean
   email: ValidationResult
   password: ValidationResult
+  isStaySignedIn: ValidationResult
 }
 
-export class SignUp implements SignUpRequest {
+export class SignIn implements SignInRequest {
   email: string
   password: string
+  isStaySignedIn: boolean
 
-  constructor({ email, password }: SignUpRequest) {
+  constructor({ email, password, isStaySignedIn }: SignInRequest) {
     this.email = email
     this.password = password
+    this.isStaySignedIn = isStaySignedIn
   }
 
-  validate(): SignUpValidationResult {
+  validate(): SignInValidationResult {
     const res = {
       valid: true,
       email: { valid: true, message: '' },
       password: { valid: true, message: '' },
+      isStaySignedIn: { valid: true, message: '' },
     }
 
     if (!this.email) {
