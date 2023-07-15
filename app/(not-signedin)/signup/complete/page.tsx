@@ -7,7 +7,7 @@ export default function SignUpComplete() {
         <div className="mb-8">
           <SuccessIcon />
         </div>
-        <span className="text-2xl leading-normal">
+        <span className="text-xl leading-normal sm:text-2xl">
           メールを送信しました。
           <br />
           メールに記載されているリンクから登録を完了させてください。

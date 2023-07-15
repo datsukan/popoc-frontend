@@ -65,7 +65,7 @@ export const SignInForm = () => {
   }
 
   return (
-    <div className="w-[500px] rounded-lg p-12 shadow-2xl">
+    <div className="w-full sm:w-[500px] sm:rounded-lg sm:p-12 sm:shadow-2xl">
       <div className="flex flex-col items-center">
         <Logo />
         <h1 className="mt-4 text-2xl">ログイン</h1>

@@ -4,10 +4,10 @@ import { SignInButton } from '@/components/button/SignInButton'
 
 export const NotSignedInHeader = () => {
   return (
-    <div className="px-8 pt-8">
-      <div className="flex items-center justify-between">
+    <div className="h-16 px-3 sm:px-8">
+      <div className="flex h-full items-center justify-between">
         <Logo />
-        <div className="flex gap-5">
+        <div className="flex gap-2 sm:gap-5">
           <SignUpButton />
           <SignInButton />
         </div>

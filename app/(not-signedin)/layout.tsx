@@ -1,5 +1,5 @@
 import { NotSignedInHeader } from '@/components/layout/NotSignedInHeader'
-import { Footer } from '@/components/layout/Footer'
+import { NotSignedInFooter } from '@/components/layout/NotSignedInFooter'
 
 export default function AboutLayout({
   children,
@@ -7,12 +7,10 @@ export default function AboutLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="container flex h-full min-h-screen grow flex-col gap-8 px-3 pt-8 sm:mx-auto sm:px-0">
       <NotSignedInHeader />
-      <div className="container mx-auto flex h-full grow flex-col">
-        <div className="flex grow flex-col">{children}</div>
-        <Footer />
-      </div>
+      <div className="flex grow flex-col">{children}</div>
+      <NotSignedInFooter />
     </div>
   )
 }
